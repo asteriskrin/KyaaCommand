@@ -64,7 +64,7 @@ public OnPlayerKyaa(playerid, kyaa_text[], status);
 
 public OnPlayerText(playerid, text[]) {
 	if(!isnull(text)) {
-		if(text[0] == '@') {
+		if(text[0] == '!') {
 			new pos = 0, kyaa_name[MAX_KYAA_NAME];
 			while(text[++pos] > ' ') {
 				kyaa_name[pos - 1] = tolower(text[pos]);
