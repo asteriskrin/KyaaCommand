@@ -64,7 +64,7 @@ public OnPlayerKyaa(playerid, kyaa_text[], status);
 
 public OnPlayerText(playerid, text[]) {
 	if(!isnull(text)) {
-		if(text[0] == '!') {
+		if(text[0] == '!' && text[1] != '\0') {
 			new pos = 0, kyaa_name[MAX_KYAA_NAME];
 			while(text[++pos] > ' ') {
 				kyaa_name[pos - 1] = tolower(text[pos]);
@@ -72,12 +72,17 @@ public OnPlayerText(playerid, text[]) {
 			format(kyaa_name, sizeof kyaa_name, "kyaa_%s", kyaa_name);
 			while(text[pos] == ' ') pos++;
 
+			new response;
 			// No parameter is passed
 			if(!text[pos]) {
-				return CallLocalFunction("OnPlayerKyaa", "isi", playerid, text, CallLocalFunction(kyaa_name, "is", playerid, "\1"));
+				response = CallLocalFunction("OnPlayerKyaa", "isi", playerid, text, CallLocalFunction(kyaa_name, "is", playerid, "\1"));
 			}
 			else {
-				return CallLocalFunction("OnPlayerKyaa", "isi", playerid, text, CallLocalFunction(kyaa_name, "is", playerid, text[pos]));
+				response = CallLocalFunction("OnPlayerKyaa", "isi", playerid, text, CallLocalFunction(kyaa_name, "is", playerid, text[pos]));
+			}
+
+			if(response == 0) {
+				return 0;
 			}
 		}
 	}
