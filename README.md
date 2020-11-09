@@ -33,7 +33,7 @@ This callback gets called when kyaa command is typed.
 ## Usage
 Quick example how to use the library:
 ```c
-KYAA:(playerid, parameter[]) {
+KYAA:test(playerid, parameter[]) {
 	// write code here
 	SetPlayerPos(playerid, 1234.5678, 910.1112, 1314.1516);
 	return 1;
