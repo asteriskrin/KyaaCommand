@@ -2,7 +2,7 @@
  * Kyaa Command
  *
  * Author: AsteriskRin
- * Version: 1.0
+ * Version: 1.1
  */
 
 #if defined _kyaa_included
@@ -11,7 +11,12 @@
 
 #define _kyaa_included
 
-#include <a_samp>
+#if !defined _samp_included
+	#tryinclude <a_samp>
+	#if !defined _samp_included
+		#error could not locate a_samp.inc file, please check your server includes
+	#endif
+#endif
 
 #define MAX_KYAA_NAME (24)
 
